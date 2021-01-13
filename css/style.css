@@ -1,10 +1,23 @@
 :root{
     --bg-color: whitesmoke;
     --dark-bg-color: rgb(215, 215, 215);
+    --primary-color: #cd1406;
+    --dark-primary-color: #9b0a00;
 }
 
-body{
+main{
     background-color: var(--bg-color);
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+body, html{
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    width: 100%;
 }
 
 #rmID{
@@ -12,11 +25,13 @@ body{
 }
 
 #msgBox{
+    text-align: left;
     overflow-y: scroll;
     height: 50%;
-    width: 95%;
+    width: 50%;
     margin: auto;
 
     border-radius: 5px;
+    border: 1px solid var(--dark-primary-color);
     background-color: var(--dark-bg-color);
 }
