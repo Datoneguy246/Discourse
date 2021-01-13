@@ -12,7 +12,7 @@ body{
 }
 
 #msgBox{
-    overflow-y: auto;
+    overflow-y: scroll;
     height: 50%;
     width: 95%;
     margin: auto;

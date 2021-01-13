@@ -1,6 +1,13 @@
 var Room = null;
 var msgBox = document.getElementById('msgBox');
+var initialized = false;
 var refreshLoop = setInterval(retrieveRoom, 250);
+
+// Special characters that need to be substituted in the server
+var subCharacters = [
+    [";", "(semi)"],
+    ["&", "(amp)"]
+];
 
 // Find what room the client is connected to
 function findCurrentRoom()
@@ -51,6 +58,10 @@ function retrieveRoom()
     for(var i = 0; i < messages.length; i++)
     {
         var msgData = messages[i].split(';');
+        // Replace subsitution characters
+        (subCharacters).forEach(character => {
+            msgData[2] = msgData[2].replace(character[1], character[0]);
+        });
 
         var msgHeader = document.createTextNode('[' + msgData[0] + '] ' + msgData[1] + ': ');
         var boldNode = document.createElement('strong');
@@ -63,6 +74,12 @@ function retrieveRoom()
 
         msgBox.appendChild(pNode);
     }
+
+    if(initialized == false)
+    {
+        initialized = true;
+        msgBox.scrollTop = msgBox.scrollHeight;
+    }
 }
 
 function sendMessage()
@@ -70,6 +87,11 @@ function sendMessage()
     // Get input from field
     var inputField = document.getElementById('msg');
     var toSend = inputField.value;
+
+    // Replace subsitution characters
+    (subCharacters).forEach(character => {
+        toSend = toSend.replace(character[0], character[1]);
+    });
     
     // Are we in a room?
     if(Room == null)
