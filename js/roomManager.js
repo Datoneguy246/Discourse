@@ -1,6 +1,6 @@
 var Room = null;
 var msgBox = document.getElementById('msgBox');
-setInterval(retrieveRoom, 250);
+var refreshLoop = setInterval(retrieveRoom, 250);
 
 // Find what room the client is connected to
 function findCurrentRoom()
@@ -19,7 +19,7 @@ function readFile(filePath) {
       result = xmlhttp.responseText;
     }
     return result;
-  }
+}
 
 // Refresh room
 function retrieveRoom()
@@ -32,6 +32,16 @@ function retrieveRoom()
 
     // Get data
     var rawData = readFile(Room);
+    if(rawData == null)
+    {
+        // Error
+        var errorMsg = document.createTextNode("Could not connect to room");
+        var errorNode = document.createElement('p');
+        errorNode.appendChild(errorMsg);
+        msgBox.appendChild(errorNode);
+        clearInterval(refreshLoop);
+        return;
+    }
 
     // Clear box
     msgBox.innerHTML = "";
@@ -53,4 +63,24 @@ function retrieveRoom()
 
         msgBox.appendChild(pNode);
     }
+}
+
+function sendMessage()
+{
+    // Get input from field
+    var inputField = document.getElementById('msg');
+    var toSend = inputField.value;
+    
+    // Are we in a room?
+    if(Room == null)
+    {
+        Room = findCurrentRoom();
+    }
+
+    // Call php script
+    var xmlhttp = new XMLHttpRequest();
+    var phpUrl = "addToRoom.php?rm=" + Room + "&q=" + toSend;
+    console.log("sending: " + toSend+ " to: " + phpUrl);
+    xmlhttp.open("GET", phpUrl, true);
+    xmlhttp.send();
 }
