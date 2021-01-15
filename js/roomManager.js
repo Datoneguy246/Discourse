@@ -63,16 +63,37 @@ function retrieveRoom()
             msgData[2] = msgData[2].replace(character[1], character[0]);
         });
 
-        var msgHeader = document.createTextNode('[' + msgData[0] + '] ' + msgData[1] + ': ');
-        var boldNode = document.createElement('strong');
-        boldNode.appendChild(msgHeader);
+        // Create message div
+        var msgNode = document.createElement('div');
 
+        // Bolded Name
+        var name = document.createTextNode(msgData[1]);
+        var boldNode = document.createElement('strong');
+        var nNode = document.createElement('p');
+        boldNode.appendChild(name);
+        nNode.appendChild(boldNode);
+        nNode.classList = 'inline name';
+        msgNode.appendChild(nNode);
+
+        // Time
+        var time = document.createTextNode(msgData[0]);
+        var tNode = document.createElement('p');
+        tNode.appendChild(time);
+        tNode.classList = "inline time";
+        msgNode.appendChild(tNode);
+
+        // Message
         var msg = document.createTextNode(msgData[2]);
         var pNode = document.createElement('p');
-        pNode.appendChild(boldNode);
+        pNode.classList = "message";
         pNode.appendChild(msg);
+        msgNode.appendChild(pNode);
 
-        msgBox.appendChild(pNode);
+        // HR
+        var HR = document.createElement('hr');
+        msgNode.appendChild(HR);
+
+        msgBox.appendChild(msgNode);
     }
 
     if(initialized == false)
@@ -87,6 +108,7 @@ function sendMessage()
     // Get input from field
     var inputField = document.getElementById('msg');
     var toSend = inputField.value;
+    inputField.value = "";
 
     // Replace subsitution characters
     (subCharacters).forEach(character => {
