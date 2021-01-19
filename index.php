@@ -1,7 +1,7 @@
 <?php include "html/header.html" ?>
 <div>
     <h1>Log In on Discourse</h1>
-    <form action="/login.php" method="POST">
+    <form action="/index.php" method="POST">
         <input name="username" placeholder="Username" required value="<?php print($_POST["username"]) ?>" />
         <input name="password" placeholder="Password" type="password" required />
         <input type="submit" value="Log In" />

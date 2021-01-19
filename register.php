@@ -1,7 +1,40 @@
 <?php
+    // Get user data
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $firstName = $_POST['first-name'];
+    $lastName = $_POST['last-name'];
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if ($_POST["password"] !== $_POST["confirm-password"]) {
+        if ($password !== $_POST["confirm-password"]) {
             print("Password fields do not match");
+        }else{
+            // Send new user to the server by...
+            $db = new SQLite3('users.db');
+            // Get a unique ID by converting each chracter to an int
+            $characters = str_split($username);
+            $ID = 0;
+            foreach ($characters as $char) {
+                $ID = $ID + ord($char);
+            }
+
+            // Check if it already exists
+            $idExists = true;
+            while ($idExists == true):
+                $check = "SELECT ID FROM users WHERE ID is ".$ID;
+                $IDFound = $db->query($check);
+                if ($IDFound->fetchArray()) {
+                    $ID = $ID + 1;
+                }else{
+                    $idExists = false;
+                }
+            endwhile;
+
+            // And sending it to the DB
+            $query = "INSERT INTO users (ID, Username, Password, Email, FirstName, LastName) 
+            VALUES(".$ID.",'".$username."','".$password."','".$email."','".$firstName."','".$lastName."')";
+            $db->query($query);
         }
     }
 ?>
