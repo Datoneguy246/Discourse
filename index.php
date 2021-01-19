@@ -1,4 +1,4 @@
-<?php include "header.php" ?>
+<?php include "html/header.html" ?>
 <div>
     <h1>Log In on Discourse</h1>
     <form action="/login.php" method="POST">
@@ -10,4 +10,4 @@
         If you have not logged in <a href="/register.php">Register Now</a>
     </p>
 </div>
-<?php include "footer.php" ?>
+<?php include "html/footer.html" ?>

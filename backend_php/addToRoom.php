@@ -1,5 +1,5 @@
 <?php
-    $filename = $_GET['rm'];
+    $filename = "../".$_GET['rm'];
 
     $user = 'todo';
     $time = date('h:i');
