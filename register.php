@@ -35,6 +35,12 @@
             $query = "INSERT INTO users (ID, Username, Password, Email, FirstName, LastName) 
             VALUES(".$ID.",'".$username."','".$password."','".$email."','".$firstName."','".$lastName."')";
             $db->query($query);
+
+            // And go to the chat room (there's got to be a better way to do this, but my code is already full of weird shortcuts, so who cares!)
+            echo '<script type="text/JavaScript">  
+                    window.location.href = "./room.php"; 
+                </script>';
+            exit;
         }
     }
 ?>

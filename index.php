@@ -1,3 +1,38 @@
+<?php
+    // Get input
+    $username = $_POST['username'];
+    $passwordIn = $_POST['password'];
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        // Get DB
+        $db = new SQLite3('users.db');
+
+        // Check if user exists
+        $query = "SELECT Password FROM users WHERE Username = '".$username."'";
+        $possibleUsers = $db->query($query);
+        if ($passwords = $possibleUsers->fetchArray())
+        {
+            foreach($passwords as $password)
+            {
+                if($password == $passwordIn)
+                {
+                    $IDQ = "SELECT ID FROM users WHERE Username = '".$username."' AND Password = '".$password."'";
+                    $ID = $db->query($IDQ)->fetchArray()[0];
+                    print($ID);
+
+                    echo '<script type="text/JavaScript">  
+                            window.location.href = "./room.php"; 
+                        </script>';
+                    exit;
+                }
+            }
+            print("Incorrect Password");
+        }else{
+            print("There is no user with that username");
+        }
+    }
+?>
+
 <?php include "html/header.html" ?>
 <div>
     <h1>Log In on Discourse</h1>
