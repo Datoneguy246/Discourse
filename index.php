@@ -18,9 +18,10 @@
                 {
                     $IDQ = "SELECT ID FROM users WHERE Username = '".$username."' AND Password = '".$password."'";
                     $ID = $db->query($IDQ)->fetchArray()[0];
-                    print($ID);
+                    
 
                     echo '<script type="text/JavaScript">  
+                            sessionStorage.setItem("user",'.$ID.');
                             window.location.href = "./room.php"; 
                         </script>';
                     exit;

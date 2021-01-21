@@ -123,7 +123,7 @@ function sendMessage()
 
     // Call php script
     var xmlhttp = new XMLHttpRequest();
-    var phpUrl = "backend_php/addToRoom.php?rm=" + Room + "&q=" + toSend;
+    var phpUrl = "backend_php/addToRoom.php?rm=" + Room + "&q=" + toSend + "&u=" + sessionStorage.getItem("user");;
     console.log("sending: " + toSend+ " to: " + phpUrl);
     xmlhttp.open("GET", phpUrl, true);
     xmlhttp.send();
