@@ -38,7 +38,7 @@
 <div class="wrapper">
     <div class="content">
         <h1>Log In on Discourse</h1>
-        <form action="/login.php" method="POST">
+        <form action="./login.php" method="POST">
             <div>
                 <input name="username" placeholder="Username" required value="<?php print($_POST["username"]) ?>" />
             </div>
