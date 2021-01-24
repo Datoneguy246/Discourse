@@ -35,15 +35,23 @@
 ?>
 
 <?php include "html/header.html" ?>
-<div>
-    <h1>Log In on Discourse</h1>
-    <form action="/login.php" method="POST">
-        <input name="username" placeholder="Username" required value="<?php print($_POST["username"]) ?>" />
-        <input name="password" placeholder="Password" type="password" required />
-        <input type="submit" value="Log In" />
-    </form>
-    <p>
-        If you have not logged in <a href="/register.php">Register Now</a>
-    </p>
+<div class="wrapper">
+    <div class="content">
+        <h1>Log In on Discourse</h1>
+        <form action="./login.php" method="POST">
+            <div>
+                <input name="username" placeholder="Username" required value="<?php print($_POST["username"]) ?>" />
+            </div>
+            <div>
+                <input name="password" placeholder="Password" type="password" required />
+            </div>
+            <div>
+                <input type="submit" value="Log In" />
+            </div>
+        </form>
+        <p>
+            If you have not logged in <a href="/register.php">Register Now</a>
+        </p>
+    </div>
 </div>
 <?php include "html/footer.html" ?>
