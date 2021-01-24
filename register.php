@@ -47,16 +47,71 @@
 ?>
 
 <?php include "html/header.html" ?>
-<div>
-    <h1>Register Page</h1>
-    <form action="/register.php" method="POST">
-        <input name="first-name" placeholder="First Name" required value="<?php print($_POST["first-name"]); ?>" />
-        <input name="last-name" placeholder="Last Name" required value="<?php print($_POST["last-name"]); ?>" />
-        <input name="username" placeholder="Username" required value="<?php print($_POST["username"]) ?>" />
-        <input name="email" type="email" placeholder="Email" required value="<?php print($_POST["email"]) ?>" />
-        <input name="password" type="password" minlength="8" placeholder="Password" required />
-        <input name="confirm-password" type="password" minlength="8" placeholder="Confirm Password" required />
-        <input type="submit" value="Register" />
-    </form>
+<div class="wrapper">
+    <div class="content">
+        <h1>Discourse Register Page</h1>
+        <form action="/register.php" method="POST">
+            <div class="form-group">
+                <input
+                    name="first-name" 
+                    placeholder="First Name" 
+                    required 
+                    class="form-control"
+                    value="<?php print($_POST["first-name"]); ?>" 
+                />
+            </div>
+            <div class="form-group">
+                <input 
+                    name="last-name" 
+                    placeholder="Last Name" 
+                    required 
+                    class="form-control"
+                    value="<?php print($_POST["last-name"]); ?>" 
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    name="username" 
+                    placeholder="Username" 
+                    required 
+                    class="form-control"
+                    value="<?php print($_POST["username"]) ?>" 
+                />
+            </div>
+            <div class="form-group">
+                <input 
+                    name="email" 
+                    type="email" 
+                    placeholder="Email" 
+                    required 
+                    class="form-control"
+                    value="<?php print($_POST["email"]) ?>" 
+                />
+            </div>
+            <div class="form-group">
+                <input 
+                    name="password" 
+                    type="password" 
+                    minlength="8" 
+                    placeholder="Password" 
+                    required 
+                    class="form-control"
+                />
+            </div>
+            <div class="form-group">
+                <input 
+                    name="confirm-password" 
+                    type="password" 
+                    minlength="8" 
+                    placeholder="Confirm Password" 
+                    required 
+                    class="form-control"
+                />
+            </div>
+            <button type="submit">
+                Register
+            </button>
+        </form>
+    </div>    
 </div>
 <?php include "html/footer.html" ?>

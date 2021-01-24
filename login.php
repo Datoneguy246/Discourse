@@ -39,15 +39,29 @@
     <div class="content">
         <h1>Log In on Discourse</h1>
         <form action="/login.php" method="POST">
-            <div>
-                <input name="username" placeholder="Username" required value="<?php print($_POST["username"]) ?>" />
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                    class="form-control" 
+                    name="username" 
+                    placeholder="Username" 
+                    required 
+                    value="<?php print($_POST["username"]) ?>"
+                />
             </div>
-            <div>
-                <input name="password" placeholder="Password" type="password" required />
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    class="form-control"
+                    name="password"
+                    placeholder="Password" 
+                    type="password" 
+                    required
+                />
             </div>
-            <div>
-                <input type="submit" value="Log In" />
-            </div>
+            <button type="submit">
+                Log In
+            </button>
         </form>
         <p>
             If you have not logged in <a href="/register.php">Register Now</a>

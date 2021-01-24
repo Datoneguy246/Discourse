@@ -77,3 +77,15 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.form-group {
+    margin-bottom: 2em;
+}
+
+.form-group label {
+    display: block;
+}
+
+.form-control {
+    display: block;
+}
