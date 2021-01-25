@@ -50,7 +50,7 @@
 <div class="wrapper">
     <div class="content">
         <h1>Discourse Register Page</h1>
-        <form action="/register.php" method="POST">
+        <form action="./register.php" method="POST">
             <div class="form-group">
                 <input
                     name="first-name" 

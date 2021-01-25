@@ -39,7 +39,7 @@
     <div class="content">
         <div class="login-block">
             <h1>Log In on Discourse</h1>
-            <form action="/login.php" method="POST">
+            <form action="./login.php" method="POST">
                 <div class="form-body">
                     <div class="form-group">
                         <label for="username">Username</label>
