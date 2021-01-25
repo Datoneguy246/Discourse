@@ -37,35 +37,41 @@
 <?php include "html/header.html" ?>
 <div class="wrapper">
     <div class="content">
-        <h1>Log In on Discourse</h1>
-        <form action="/login.php" method="POST">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input
-                    class="form-control" 
-                    name="username" 
-                    placeholder="Username" 
-                    required 
-                    value="<?php print($_POST["username"]) ?>"
-                />
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                    class="form-control"
-                    name="password"
-                    placeholder="Password" 
-                    type="password" 
-                    required
-                />
-            </div>
-            <button type="submit">
-                Log In
-            </button>
-        </form>
-        <p>
-            If you have not logged in <a href="/register.php">Register Now</a>
-        </p>
+        <div class="login-block">
+            <h1>Log In on Discourse</h1>
+            <form action="/login.php" method="POST">
+                <div class="form-body">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input
+                            class="form-control" 
+                            name="username" 
+                            placeholder="Username" 
+                            required 
+                            value="<?php print($_POST["username"]) ?>"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input
+                            class="form-control"
+                            name="password"
+                            placeholder="Password" 
+                            type="password" 
+                            required
+                        />
+                    </div>
+                </div>
+                <div class="form-footer">
+                <button type="submit">
+                    Log In
+                </button>
+                </div>
+            </form>
+            <p class="form-register-reference">
+                If you have not logged in <a href="/register.php">Register Now</a>
+            </p>
+        </div>
     </div>
 </div>
 <?php include "html/footer.html" ?>
