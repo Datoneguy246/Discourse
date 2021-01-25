@@ -69,7 +69,7 @@
                 </div>
             </form>
             <p class="form-register-reference">
-                If you have not logged in <a href="/register.php">Register Now</a>
+                If you have not logged in <a href="./register.php">Register Now</a>
             </p>
         </div>
     </div>
