@@ -37,6 +37,7 @@
 <?php include "html/header.html" ?>
 <div class="wrapper">
     <div class="content">
+<<<<<<< HEAD
         <div class="login-block">
             <h1>Log In on Discourse</h1>
             <form action="/login.php" method="POST">
@@ -72,6 +73,23 @@
                 If you have not logged in <a href="/register.php">Register Now</a>
             </p>
         </div>
+=======
+        <h1>Log In on Discourse</h1>
+        <form action="./login.php" method="POST">
+            <div>
+                <input name="username" placeholder="Username" required value="<?php print($_POST["username"]) ?>" />
+            </div>
+            <div>
+                <input name="password" placeholder="Password" type="password" required />
+            </div>
+            <div>
+                <input type="submit" value="Log In" />
+            </div>
+        </form>
+        <p>
+            If you have not logged in <a href="/register.php">Register Now</a>
+        </p>
+>>>>>>> 5dfd2e0971c2baab9fe08169d6a61dc45c98700a
     </div>
 </div>
 <?php include "html/footer.html" ?>

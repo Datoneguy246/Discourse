@@ -47,6 +47,7 @@
 ?>
 
 <?php include "html/header.html" ?>
+<<<<<<< HEAD
 <div class="wrapper">
     <div class="content">
         <h1>Discourse Register Page</h1>
@@ -113,5 +114,18 @@
             </button>
         </form>
     </div>    
+=======
+<div>
+    <h1>Register Page</h1>
+    <form action="./register.php" method="POST">
+        <input name="first-name" placeholder="First Name" required value="<?php print($_POST["first-name"]); ?>" />
+        <input name="last-name" placeholder="Last Name" required value="<?php print($_POST["last-name"]); ?>" />
+        <input name="username" placeholder="Username" required value="<?php print($_POST["username"]) ?>" />
+        <input name="email" type="email" placeholder="Email" required value="<?php print($_POST["email"]) ?>" />
+        <input name="password" type="password" minlength="8" placeholder="Password" required />
+        <input name="confirm-password" type="password" minlength="8" placeholder="Confirm Password" required />
+        <input type="submit" value="Register" />
+    </form>
+>>>>>>> 5dfd2e0971c2baab9fe08169d6a61dc45c98700a
 </div>
 <?php include "html/footer.html" ?>
