@@ -18,7 +18,6 @@ body, html{
     font-family: 'Roboto', sans-serif;
     width: 100%;
     height: 100%;
-    text-align: center;
 }
 
 #rmID{
@@ -76,6 +75,10 @@ body, html{
 body {
     display: flex;
     flex-direction: column;
+}
+
+footer{
+    text-align: center;
 }
 
 .form-group:not(:last-child) {
