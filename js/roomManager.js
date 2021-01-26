@@ -20,7 +20,8 @@ function findCurrentRoom()
 function readFile(filePath) {
     var result = null;
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", filePath, false);
+    var ms = Date.now();
+    xmlhttp.open("GET", filePath + "?time=" + ms.toString(), false);
     xmlhttp.send();
     if (xmlhttp.status==200) {
       result = xmlhttp.responseText;
@@ -123,7 +124,7 @@ function sendMessage()
 
     // Call php script
     var xmlhttp = new XMLHttpRequest();
-    var phpUrl = "./backend_php/addToRoom.php?rm=" + Room + "&q=" + toSend + "&u=" + sessionStorage.getItem("user");;
+    var phpUrl = "./backend_php/addToRoom.php?rm=" + Room + "&q=" + toSend + "&u=" + sessionStorage.getItem("user");
     console.log("sending: " + toSend+ " to: " + phpUrl);
     xmlhttp.open("GET", phpUrl, true);
     xmlhttp.send();
