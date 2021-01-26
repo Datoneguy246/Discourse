@@ -1,4 +1,4 @@
 # Discourse
 
 A chatroom site made for a school project:
-Currently live at: https://datoneguy246.github.io/Discourse/
+Currently live at: http://fatherluca.club/fatherluca.club/advanced/advanced/
