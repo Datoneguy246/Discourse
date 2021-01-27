@@ -38,36 +38,38 @@
 <div class="wrapper">
     <div class="content">
         <div class="login-block">
+            <div class="header-color">
             <h1>Log In on Discourse</h1>
-            <form action="./login.php" method="POST">
-                <div class="form-body">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input
-                            class="form-control" 
-                            name="username" 
-                            placeholder="Username" 
-                            required 
-                            value="<?php print($_POST["username"]) ?>"
-                        />
+                <form action="./login.php" method="POST">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input
+                                class="form-control" 
+                                name="username" 
+                                placeholder="Username" 
+                                required 
+                                value="<?php print($_POST["username"]) ?>"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input
+                                class="form-control"
+                                name="password"
+                                placeholder="Password" 
+                                type="password" 
+                                required
+                            />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input
-                            class="form-control"
-                            name="password"
-                            placeholder="Password" 
-                            type="password" 
-                            required
-                        />
+            </div>
+                    <div class="form-footer">
+                    <button type="submit">
+                        Log In
+                    </button>
                     </div>
-                </div>
-                <div class="form-footer">
-                <button type="submit">
-                    Log In
-                </button>
-                </div>
-            </form>
+                </form>
             <p class="form-register-reference">
                 If you have not logged in <a href="./register.php">Register Now</a>
             </p>
