@@ -111,6 +111,10 @@ function sendMessage()
     // Get input from field
     var inputField = document.getElementById('msg');
     var toSend = inputField.value;
+    if(toSend.trim() == "")
+    {
+        return;
+    }
     inputField.value = "";
 
     // Replace subsitution characters
