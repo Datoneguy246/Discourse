@@ -1,6 +1,5 @@
 var Room = null;
 var msgBox = document.getElementById('msgBox');
-var initialized = false;
 var refreshLoop = setInterval(retrieveRoom, 250);
 var establishedMessages = [];
 
@@ -96,13 +95,11 @@ function retrieveRoom()
     
             msgBox.appendChild(msgNode);
             establishedMessages.push(messages[i]);
-        }
-    }
+            msgBox.scrollTop = msgBox.scrollHeight;
 
-    if(initialized == false)
-    {
-        initialized = true;
-        msgBox.scrollTop = msgBox.scrollHeight;
+            // Play sound
+            Play("NewMsg");
+        }
     }
 }
 
