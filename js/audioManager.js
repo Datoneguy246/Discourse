@@ -2,7 +2,7 @@
 // Clips
 var audioClips = {
     "NewMsg": new Howl({
-        src: ['../audio/NewMsg.mp3']
+        src: ['./audio/NewMsg.mp3']
     })
 };
 
