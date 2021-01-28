@@ -10,8 +10,7 @@ var subCharacters = [
 ];
 
 // Find what room the client is connected to
-function findCurrentRoom()
-{
+function findCurrentRoom() {
     var hidden = document.getElementById('rmID');
     return hidden.innerHTML;
 }
@@ -23,25 +22,22 @@ function readFile(filePath) {
     var ms = Date.now();
     xmlhttp.open("GET", filePath + "?time=" + ms.toString(), false);
     xmlhttp.send();
-    if (xmlhttp.status==200) {
-      result = xmlhttp.responseText;
+    if (xmlhttp.status == 200) {
+        result = xmlhttp.responseText;
     }
     return result;
 }
 
 // Refresh room
-function retrieveRoom()
-{
+function retrieveRoom() {
     // Are we connected to a room?
-    if(Room == null)
-    {
+    if (Room == null) {
         Room = findCurrentRoom();
     }
 
     // Get data
     var rawData = readFile(Room);
-    if(rawData == null)
-    {
+    if (rawData == null) {
         // Error
         var errorMsg = document.createTextNode("Could not connect to room");
         var errorNode = document.createElement('p');
@@ -53,19 +49,17 @@ function retrieveRoom()
 
     // Process data
     var messages = rawData.split('\n');
-    for(var i = 0; i < messages.length; i++)
-    {
-        if(!establishedMessages.includes(messages[i]))
-        {
+    for (var i = 0; i < messages.length; i++) {
+        if (!establishedMessages.includes(messages[i])) {
             var msgData = messages[i].split(';');
             // Replace subsitution characters
             (subCharacters).forEach(character => {
                 msgData[2] = msgData[2].replace(character[1], character[0]);
             });
-    
+
             // Create message div
             var msgNode = document.createElement('div');
-    
+
             // Bolded Name
             var name = document.createTextNode(msgData[1]);
             var boldNode = document.createElement('strong');
@@ -74,25 +68,25 @@ function retrieveRoom()
             nNode.appendChild(boldNode);
             nNode.classList = 'inline name';
             msgNode.appendChild(nNode);
-    
+
             // Time
             var time = document.createTextNode(msgData[0]);
             var tNode = document.createElement('p');
             tNode.appendChild(time);
             tNode.classList = "inline time";
             msgNode.appendChild(tNode);
-    
+
             // Message
             var msg = document.createTextNode(msgData[2]);
             var pNode = document.createElement('p');
             pNode.classList = "message";
             pNode.appendChild(msg);
             msgNode.appendChild(pNode);
-    
+
             // HR
             var HR = document.createElement('hr');
             msgNode.appendChild(HR);
-    
+
             msgBox.appendChild(msgNode);
             establishedMessages.push(messages[i]);
             msgBox.scrollTop = msgBox.scrollHeight;
@@ -103,13 +97,11 @@ function retrieveRoom()
     }
 }
 
-function sendMessage()
-{
+function sendMessage() {
     // Get input from field
     var inputField = document.getElementById('msg');
     var toSend = inputField.value;
-    if(toSend.trim() == "")
-    {
+    if (toSend.trim() == "") {
         return;
     }
     inputField.value = "";
@@ -118,26 +110,33 @@ function sendMessage()
     (subCharacters).forEach(character => {
         toSend = toSend.replace(character[0], character[1]);
     });
-    
+
     // Are we in a room?
-    if(Room == null)
-    {
+    if (Room == null) {
         Room = findCurrentRoom();
     }
 
+    // Get time
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    var timeString = hours.toString() + ":" + minutes.toString();
+
     // Call php script
     var xmlhttp = new XMLHttpRequest();
-    var phpUrl = "./backend_php/addToRoom.php?rm=" + Room + "&q=" + toSend + "&u=" + sessionStorage.getItem("user");
-    console.log("sending: " + toSend+ " to: " + phpUrl);
+    var phpUrl = "./backend_php/addToRoom.php?rm=" + Room + "&q=" + toSend + "&u=" + sessionStorage.getItem("user") + "&d=" + timeString;
+    console.log("sending: " + toSend + " to: " + phpUrl);
     xmlhttp.open("GET", phpUrl, true);
     xmlhttp.send();
 }
 
-window.onload = function()
-{
+window.onload = function () {
     // Check if we have user
-    if(sessionStorage.getItem("user") == null)
-    {
+    if (sessionStorage.getItem("user") == null) {
         window.location.href = "./login.php";
     }
 }

@@ -1,11 +1,11 @@
 <?php
     $filename = "../".$_GET['rm'];
     $userID = $_GET['u'];
+    $time = $_GET['d'];
 
     $db = new SQLite3('../users.db');
     $user = $db->query("SELECT Username FROM users WHERE ID = ".$userID)->fetchArray()[0];
 
-    $time = date('h:i');
     $msg = $_GET['q'];
     $toWrite = $time.';'.$user.';'.$msg;
 
