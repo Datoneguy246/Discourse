@@ -50,71 +50,79 @@
 <div class="wrapper">
     <div class="content">
         <div class="login-block">
-            <h1>Discourse Register Page</h1>
-            <form action="./register.php" method="POST">
-                <div class="form-group">
-                    <input
-                        name="first-name" 
-                        placeholder="First Name" 
-                        required 
-                        class="form-control"
-                        value="<?php print($_POST["first-name"]); ?>" 
-                    />
-                </div>
-                <div class="form-group">
-                    <input 
-                        name="last-name" 
-                        placeholder="Last Name" 
-                        required 
-                        class="form-control"
-                        value="<?php print($_POST["last-name"]); ?>" 
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        name="username" 
-                        placeholder="Username" 
-                        required 
-                        class="form-control"
-                        value="<?php print($_POST["username"]) ?>" 
-                    />
-                </div>
-                <div class="form-group">
-                    <input 
-                        name="email" 
-                        type="email" 
-                        placeholder="Email" 
-                        required 
-                        class="form-control"
-                        value="<?php print($_POST["email"]) ?>" 
-                    />
-                </div>
-                <div class="form-group">
-                    <input 
-                        name="password" 
-                        type="password" 
-                        minlength="8" 
-                        placeholder="Password" 
-                        required 
-                        class="form-control"
-                    />
-                </div>
-                <div class="form-group">
-                    <input 
-                        name="confirm-password" 
-                        type="password" 
-                        minlength="8" 
-                        placeholder="Confirm Password" 
-                        required 
-                        class="form-control"
-                    />
-                </div>
-                <div class="form-footer">
-                <button type="submit">
-                    Register
-                </button>
-                </div>
-            </form>
+            <div class="header-color">
+                <h1>Discourse Register Page</h1>
+                <form action="./register.php" method="POST">
+                    <div class="form-group">
+                        <label for="first-name">Name</label>
+                        <input
+                            name="first-name" 
+                            placeholder="First Name" 
+                            required 
+                            class="form-control"
+                            value="<?php print($_POST["first-name"]); ?>" 
+                        />
+                    </div>
+                    <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                        <input 
+                            name="last-name" 
+                            placeholder="Last Name" 
+                            required 
+                            class="form-control"
+                            value="<?php print($_POST["last-name"]); ?>" 
+                        />
+                    </div>
+                    <div class="form-group">
+                    <label for="username">Username</label>
+                        <input
+                            name="username" 
+                            placeholder="Username" 
+                            required 
+                            class="form-control"
+                            value="<?php print($_POST["username"]) ?>" 
+                        />
+                    </div>
+                    <div class="form-group">
+                    <label for="email">Email</label>
+                        <input 
+                            name="email" 
+                            type="email" 
+                            placeholder="Email" 
+                            required 
+                            class="form-control"
+                            value="<?php print($_POST["email"]) ?>" 
+                        />
+                    </div>
+                    <div class="form-group">
+                    <label for="password">Password</label>
+                        <input 
+                            name="password" 
+                            type="password" 
+                            minlength="8" 
+                            placeholder="Password" 
+                            required 
+                            class="form-control"
+                        />
+                    </div>
+                    <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                        <input 
+                            name="confirm-password" 
+                            type="password" 
+                            minlength="8" 
+                            placeholder="Confirm Password" 
+                            required 
+                            class="form-control"
+                        />
+                    </div>
+                    <div class="form-footer">
+                    <button type="submit">
+                        Register
+                    </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>    
 </div>
