@@ -3,12 +3,14 @@
     --dark-bg-color: rgb(202, 202, 202);
     --primary-color: #cd1406;
     --dark-primary-color: #9b0a00;
-    --text-color: black;
+    --text-color: rgb(73, 73, 73);
+    --text-color-hover: black;
+    --text-contrast-color: white;
 }
 
 main{
     background-color: var(--bg-color);
-    color: black;
+    color: var(--text-color);
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -46,6 +48,7 @@ body, html{
     width: 70%;
     height: fit-content;
     margin: auto;
+    padding-top: 10px;
 }
 
 .inline{
@@ -78,11 +81,7 @@ footer{
     margin-bottom: 1em;
 }
 
-.form-group label {
-    display: block;
-}
-
-.form-control {
+.form-control, .form-group label  {
     display: block;
 }
 
@@ -92,7 +91,7 @@ footer{
     border-radius: 0.5em;
     border: none;
     padding: 0.5em;
-    background-color: darkgray;
+    background-color: var(--dark-bg-color);
 }
 
 .form-footer {
@@ -100,7 +99,7 @@ footer{
 }
 
 .login-block {
-    background-color: white;
+    background-color: var(--bg-color);
     padding: 2em;
     border-radius: 0.5em;
 }
@@ -115,32 +114,15 @@ footer{
     font-weight: 300;
 }
 
-nav ul {
-    list-style: none;
-    margin-left: 0;
-    display: flex;
-    height: 100%;
-    align-items: center;
-}
 
 header {
     display: flex;
-    background: white;
-    color: gray;
     padding: 1em;
 }
 
-.logo {
-    flex-grow: 1;
-}
-
-nav ul li:not(:last-child) {
-    margin-right: 1em;
-}
-
 .intro {
-    color: white;
-    background-image: url(../img/back-bay.jpg);
+    color: var(--text-contrast-color);
+    background: url(../img/back-bay.jpg) no-repeat center center fixed;
     padding: 2em;
     min-height: 400px;
     background-repeat: no-repeat;
@@ -149,13 +131,34 @@ nav ul li:not(:last-child) {
     align-items: center;
     justify-content: center;
     text-align: center;
+    text-shadow: 2px 2px var(--text-color);
+    background-size: cover;
 }
 
 .logo a {
     text-decoration: none;
-    color: gray;
 }
 
 main {
     flex-grow: 1;
+    padding: 0px;
+}
+
+.navbar{
+    width: 100%;
+}
+
+.btn:hover{
+    color: var(--text-color-hover);
+}
+
+.btn{
+    color: var(--text-color);
+}
+
+hr{
+    width: 100%;
+    height: 3px;
+    color: var(--text-color);
+    margin: 0px;
 }

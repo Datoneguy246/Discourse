@@ -9,7 +9,7 @@
 <hr>
 
 <?php
-    $db = new SQLite3("users.db");
+    $db = new SQLite3("./users.db");
 
     if ($_SERVER["REQUEST_METHOD"] === "POST")
     {

@@ -3,7 +3,7 @@
     $userID = $_GET['u'];
     $time = $_GET['d'];
 
-    $db = new SQLite3('../db/users.db');
+    $db = new SQLite3('./users.db');
     $user = $db->query("SELECT Username FROM users WHERE ID = ".$userID)->fetchArray()[0];
 
     $msg = $_GET['q'];
