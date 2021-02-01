@@ -35,10 +35,8 @@
 ?>
 
 <?php include "html/header.html" ?>
-<div class="wrapper">
-    <div class="content">
+<main>
         <div class="login-block">
-            <div class="header-color">
             <h1>Log In on Discourse</h1>
                 <form action="./login.php" method="POST">
                     <div class="form-body">
@@ -63,7 +61,6 @@
                             />
                         </div>
                     </div>
-            </div>
                     <div class="form-footer">
                     <button type="submit">
                         Log In
@@ -74,6 +71,5 @@
                 If you have not logged in <a href="./register.php">Register Now</a>
             </p>
         </div>
-    </div>
-</div>
+</main>
 <?php include "html/footer.html" ?>

@@ -47,10 +47,8 @@
 ?>
 
 <?php include "html/header.html" ?>
-<div class="wrapper">
-    <div class="content">
+<main>
         <div class="login-block">
-            <div class="header-color">
                 <h1>Discourse Register Page</h1>
                 <form action="./register.php" method="POST">
                     <div class="form-group">
@@ -122,8 +120,6 @@
                     </button>
                     </div>
                 </form>
-            </div>
         </div>
-    </div>    
-</div>
+</main> 
 <?php include "html/footer.html" ?>
