@@ -162,3 +162,7 @@ hr{
     color: var(--text-color);
     margin: 0px;
 }
+
+.made-by {
+    text-align: center;
+}
