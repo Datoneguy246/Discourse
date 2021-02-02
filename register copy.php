@@ -1,0 +1,136 @@
+<?php
+    // Get user data
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $firstName = $_POST['first-name'];
+    $lastName = $_POST['last-name'];
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if ($password !== $_POST["confirm-password"]) {
+            print("Password fields do not match");
+        }else{
+            // Send new user to the server by...
+            $db = new SQLite3('users.db');
+            // Get a unique ID by converting each chracter to an int
+            $characters = str_split($username);
+            $ID = 0;
+            foreach ($characters as $char) {
+                $ID = $ID + ord($char);
+            }
+
+            // Check if it already exists
+            $idExists = true;
+            while ($idExists == true):
+                $check = "SELECT ID FROM users WHERE ID is ".$ID;
+                $IDFound = $db->query($check);
+                if ($IDFound->fetchArray()) {
+                    $ID = $ID + 1;
+                }else{
+                    $idExists = false;
+                }
+            endwhile;
+            
+
+    ini_set("SMTP", "fatherluca.club");
+    ini_set("smtp_port", 21);
+    $hash = md5( rand(0,1000) ); // Generate random 32 character hash
+    $to = 'xboston731@gmail.com'; // Send email to our user
+    $subject = 'Signup | Verification'; // Give the email a subject 
+    $message = 'Signup successful, click this link to activate account: /n link goes here'; // Our message above including the link
+                      
+    $headers = 'From: noreply@Discourse.com' . "\r\n"; // Set from headers
+    mail($to, $subject, $message, $headers); // Send our email
+    echo "Sent";
+
+            
+            $verified = false;
+            while ($verified == false)
+            // And sending it to the DB
+            $query = "INSERT INTO users (ID, Username, Password, Email, FirstName, LastName) 
+            VALUES(".$ID.",'".$username."','".$password."','".$email."','".$firstName."','".$lastName."')";
+            $db->query($query);
+
+            // And go to the chat room (there's got to be a better way to do this, but my code is already full of weird shortcuts, so who cares!)
+            echo '<script type="text/JavaScript">  
+                    sessionStorage.setItem("user",'.$ID.');
+                    window.location.href = "./room.php"; 
+                </script>';
+            exit;
+        }
+    }
+?>
+
+<?php include "html/header.html" ?>
+<div class="wrapper">
+    <div class="content">
+        <div class="login-block">
+            <h1>Discourse Register Page</h1>
+            <form action="./register.php" method="POST">
+                <div class="form-group">
+                    <input
+                        name="first-name" 
+                        placeholder="First Name" 
+                        required 
+                        class="form-control"
+                        value="<?php print($_POST["first-name"]); ?>" 
+                    />
+                </div>
+                <div class="form-group">
+                    <input 
+                        name="last-name" 
+                        placeholder="Last Name" 
+                        required 
+                        class="form-control"
+                        value="<?php print($_POST["last-name"]); ?>" 
+                    />
+                </div>
+                <div class="form-group">
+                    <input
+                        name="username" 
+                        placeholder="Username" 
+                        required 
+                        class="form-control"
+                        value="<?php print($_POST["username"]) ?>" 
+                    />
+                </div>
+                <div class="form-group">
+                    <input 
+                        name="email" 
+                        type="email" 
+                        placeholder="Email" 
+                        required 
+                        class="form-control"
+                        value="<?php print($_POST["email"]) ?>" 
+                    />
+                </div>
+                <div class="form-group">
+                    <input 
+                        name="password" 
+                        type="password" 
+                        minlength="8" 
+                        placeholder="Password" 
+                        required 
+                        class="form-control"
+                    />
+                </div>
+                <div class="form-group">
+                    <input 
+                        name="confirm-password" 
+                        type="password" 
+                        minlength="8" 
+                        placeholder="Confirm Password" 
+                        required 
+                        class="form-control"
+                    />
+                </div>
+                <div class="form-footer">
+                <button type="submit">
+                    Register
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>    
+</div>
+<?php include "html/footer.html" ?>
