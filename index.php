@@ -1,7 +1,7 @@
 <?php include "html/header.html" ?>
 <main>
     <div class="intro">
-        <h1>A Newman Student<br/> Built Chatting<br/> Website</h1>
+        <h1>A chatting site<br/> built by Newman students<br/> for Newman students</h1>
     </div>
     <hr>
     <div class="made-by-page">

@@ -39,7 +39,7 @@
             // And go to the chat room (there's got to be a better way to do this, but my code is already full of weird shortcuts, so who cares!)
             echo '<script type="text/JavaScript">  
                     sessionStorage.setItem("user",'.$ID.');
-                    window.location.href = "./room.php"; 
+                    window.location.href = "./verify.php?email='.$email.'"; 
                 </script>';
             exit;
         }
