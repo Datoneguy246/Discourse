@@ -11,7 +11,7 @@
             print("Password fields do not match");
         }else{
             // Send new user to the server by...
-            $db = new SQLite3('backend_php/users.db');
+            $db = new SQLite3('backend_php/database.db');
             // Get a unique ID by converting each chracter to an int
             $characters = str_split($username);
             $ID = 0;

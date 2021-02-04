@@ -5,7 +5,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Get DB
-        $db = new SQLite3('backend_php/users.db');
+        $db = new SQLite3('backend_php/database.db');
 
         // Check if user exists
         $query = "SELECT Password FROM users WHERE Username = '".$username."'";

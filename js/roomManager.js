@@ -1,5 +1,6 @@
 var Room = null;
 var Init = false;
+var InitRoom = false;
 var msgBox = document.getElementById('msgBox');
 var refreshLoop = setInterval(retrieveRoom, 250);
 var establishedMessages = [];
@@ -33,7 +34,9 @@ function readFile(filePath) {
 function retrieveRoom() {
     // Are we connected to a room?
     if (Room == null) {
-        Room = findCurrentRoom();
+        var tag = findCurrentRoom().split(';');
+        Room = tag[0];
+        var rmName = tag[1];
     }
 
     // Get data
@@ -49,6 +52,16 @@ function retrieveRoom() {
     }
 
     // Process data
+    if(InitRoom == false)
+    {
+        var rmText = document.createTextNode(rmName);
+        var header = document.createElement('h3');
+        header.appendChild(rmText);
+        msgBox.parentNode.appendChild(header);
+        header.parentNode.insertBefore(header, header.previousElementSibling);
+        InitRoom = true;
+    }
+
     var messages = rawData.split('\n');
     for (var i = 0; i < messages.length; i++) {
         if (!establishedMessages.includes(messages[i])) {
@@ -149,3 +162,9 @@ window.onload = function () {
         window.location.href = "./login.php";
     }
 }
+
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 13) {
+        sendMessage();
+    }
+});

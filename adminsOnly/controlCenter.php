@@ -15,7 +15,7 @@
     {
         die("ACCESS DENIED");
     }
-    $db = new SQLite3("../backend_php/users.db");
+    $db = new SQLite3("../backend_php/database.db");
 
     if ($_SERVER["REQUEST_METHOD"] === "POST")
     {
