@@ -166,3 +166,7 @@ hr{
 .made-by {
     text-align: center;
 }
+
+.made-by-page {
+    background-color: rgb(139, 196, 247);
+}
