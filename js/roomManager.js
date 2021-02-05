@@ -1,4 +1,5 @@
 var Room = null;
+var roomBox = document.getElementById('rooms');
 var Init = false;
 var InitRoom = false;
 var msgBox = document.getElementById('msgBox');
@@ -161,6 +162,9 @@ window.onload = function () {
     if (sessionStorage.getItem("user") == null) {
         window.location.href = "./login.php";
     }
+
+    // Ok, now replace the echoed room links
+    roomBox.appendChild(document.getElementById("rmList"));
 }
 
 document.addEventListener('keydown', function(event) {
@@ -168,3 +172,8 @@ document.addEventListener('keydown', function(event) {
         sendMessage();
     }
 });
+
+function CreateRoom()
+{
+    window.location.href = "./createRoom.php";
+}
