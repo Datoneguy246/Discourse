@@ -10,7 +10,7 @@ window.onload = function Send()
 
     // Call email sender
     var xmlhttp = new XMLHttpRequest();
-    var phpUrl = "./backend_php/sendEmail.php?to=" + userData[0] + "&subject='Sign-up to Discourse!'" + "&msg=" + message;
+    var phpUrl = "./backend_php/sendEmail.php?to=" + userData[0] + "&subject=Sign-up to Discourse!" + "&msg=" + message;
     xmlhttp.open("GET", phpUrl, true);
     xmlhttp.send();
 }
