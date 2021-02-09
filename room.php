@@ -12,16 +12,11 @@
     $tag = 'rooms/server_'.$roomCode.".txt;".$rmName;
     
     // Get list of all rooms
-    $roomIDQuery = "SELECT ID from rooms";
-    $roomNameQuery = "SELECT Name from rooms";
-    $roomIDs = $db->query($roomIDQuery)->fetchArray();
-    $roomNames = $db->query($roomNameQuery)->fetchArray();
+    $allRoomQuery = "SELECT * from rooms";
+    $rooms = $db->query($allRoomQuery);
     echo "<div id='rmList'>";
-    for ($i = 0; $i <= count($roomIDs); $i++) {
-        if($roomIDs[$i] != null)
-        {
-            echo "<a href='./room.php?rm=".$roomIDs[$i]."'>".$roomNames[$i]."</a>";
-        }
+    while ($row = $rooms->fetchArray()) {
+        echo "<a href='./room.php?rm=".$row['ID']."'>".$row['Name']."</a><br>";
     }
     echo "</div>";
 

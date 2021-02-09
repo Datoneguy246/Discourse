@@ -15,6 +15,9 @@ var subCharacters = [
 // Find what room the client is connected to
 function findCurrentRoom() {
     var hidden = document.getElementById('rmID');
+    if(hidden == null)
+        return null;
+        
     return hidden.innerHTML;
 }
 
@@ -35,7 +38,11 @@ function readFile(filePath) {
 function retrieveRoom() {
     // Are we connected to a room?
     if (Room == null) {
-        var tag = findCurrentRoom().split(';');
+        var rawTag = findCurrentRoom();
+        if(rawTag == null)
+            return;
+
+        var tag = rawTag.split(';');
         Room = tag[0];
         var rmName = tag[1];
     }
@@ -64,52 +71,58 @@ function retrieveRoom() {
     }
 
     var messages = rawData.split('\n');
+    if(messages.length <= 1)
+        return;
+
     for (var i = 0; i < messages.length; i++) {
         if (!establishedMessages.includes(messages[i])) {
-            var msgData = messages[i].split(';');
-            // Replace subsitution characters
-            (subCharacters).forEach(character => {
-                msgData[2] = msgData[2].replace(character[1], character[0]);
-            });
-
-            // Create message div
-            var msgNode = document.createElement('div');
-
-            // Bolded Name
-            var name = document.createTextNode(msgData[1]);
-            var boldNode = document.createElement('strong');
-            var nNode = document.createElement('p');
-            boldNode.appendChild(name);
-            nNode.appendChild(boldNode);
-            nNode.classList = 'inline name';
-            msgNode.appendChild(nNode);
-
-            // Time
-            var time = document.createTextNode(msgData[0]);
-            var tNode = document.createElement('p');
-            tNode.appendChild(time);
-            tNode.classList = "inline time";
-            msgNode.appendChild(tNode);
-
-            // Message
-            var msg = document.createTextNode(msgData[2]);
-            var pNode = document.createElement('p');
-            pNode.classList = "message";
-            pNode.appendChild(msg);
-            msgNode.appendChild(pNode);
-
-            // HR
-            var HR = document.createElement('hr');
-            msgNode.appendChild(HR);
-
-            msgBox.appendChild(msgNode);
-            establishedMessages.push(messages[i]);
-            msgBox.scrollTop = msgBox.scrollHeight;
-
-            if(Init == true)
+            if(messages[i][0] != '*')
             {
-                // Play sound
-                Play("NewMsg");
+                var msgData = messages[i].split(';');
+                // Replace subsitution characters
+                (subCharacters).forEach(character => {
+                    msgData[2] = msgData[2].replace(character[1], character[0]);
+                });
+    
+                // Create message div
+                var msgNode = document.createElement('div');
+    
+                // Bolded Name
+                var name = document.createTextNode(msgData[1]);
+                var boldNode = document.createElement('strong');
+                var nNode = document.createElement('p');
+                boldNode.appendChild(name);
+                nNode.appendChild(boldNode);
+                nNode.classList = 'inline name';
+                msgNode.appendChild(nNode);
+    
+                // Time
+                var time = document.createTextNode(msgData[0]);
+                var tNode = document.createElement('p');
+                tNode.appendChild(time);
+                tNode.classList = "inline time";
+                msgNode.appendChild(tNode);
+    
+                // Message
+                var msg = document.createTextNode(msgData[2]);
+                var pNode = document.createElement('p');
+                pNode.classList = "message";
+                pNode.appendChild(msg);
+                msgNode.appendChild(pNode);
+    
+                // HR
+                var HR = document.createElement('hr');
+                msgNode.appendChild(HR);
+    
+                msgBox.appendChild(msgNode);
+                establishedMessages.push(messages[i]);
+                msgBox.scrollTop = msgBox.scrollHeight;
+    
+                if(Init == true)
+                {
+                    // Play sound
+                    Play("NewMsg");
+                }
             }
         }
     }
@@ -164,7 +177,10 @@ window.onload = function () {
     }
 
     // Ok, now replace the echoed room links
-    roomBox.appendChild(document.getElementById("rmList"));
+    if(roomBox != null)
+    {
+        roomBox.appendChild(document.getElementById("rmList"));
+    }
 }
 
 document.addEventListener('keydown', function(event) {
