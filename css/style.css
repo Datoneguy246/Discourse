@@ -170,3 +170,7 @@ hr{
 .made-by-page {
     background-color: rgb(139, 196, 247);
 }
+
+.hidden{
+    display: none;
+}
