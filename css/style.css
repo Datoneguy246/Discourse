@@ -121,18 +121,21 @@ header {
 }
 
 .intro {
-    color: var(--text-contrast-color);
-    background: url(../img/back-bay.jpg) no-repeat center center fixed;
+    color: black;
+    background: url(../img/12-newman.jpg) no-repeat center center fixed;
     padding: 2em;
     min-height: 400px;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    text-shadow: 2px 2px var(--text-color);
-    background-size: cover;
+}
+
+.intro h1 {
+    background-color: white;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    font-weight: bold;
 }
 
 .logo a {
@@ -169,4 +172,5 @@ hr{
 
 .made-by-page {
     background-color: rgb(139, 196, 247);
+    overflow: hidden;
 }
