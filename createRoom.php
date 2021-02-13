@@ -1,5 +1,6 @@
 <?php
     $RoomName = $_POST['input'];
+    $RoomPassword = $_POST['password'];
     if($RoomName != null)
     {
         $db = new SQLite3('./backend_php/database.db');
@@ -23,7 +24,7 @@
             }
         endwhile;
 
-        $insert = "INSERT INTO rooms (ID, Name) VALUES(".$ID.",'".$RoomName."')";
+        $insert = "INSERT INTO rooms (ID, Name, Password) VALUES(".$ID.",'".$RoomName."','".$RoomPassword."')";
         $db->query($insert);
 
         // Create the file
@@ -39,7 +40,8 @@
 <?php include "html/header.html" ?>
     <h1>Create your room!</h1>
     <form action="./createRoom.php" method="POST">
-        Room Name: <input type="text" id="input" name='input'><br>
+        Room Name: <input type="text" name='input'><br>
+        Password:  <input type="password" name="password"><br>(Leave blank to create a public room)<br>
         <button type="submit">Create</button>
     </form>
     <script src="./js/roomManager.js"></script>

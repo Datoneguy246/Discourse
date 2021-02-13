@@ -174,3 +174,7 @@ hr{
     background-color: rgb(139, 196, 247);
     overflow: hidden;
 }
+
+.hidden{
+    display: none;
+}
