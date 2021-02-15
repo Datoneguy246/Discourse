@@ -1,7 +1,12 @@
 <?php include "html/header.html" ?>
 <main>
     <div class="intro">
-        <h1>A chatting site<br/> built by Newman students<br/> for Newman students</h1>
+        <div>
+            <h1>A chatting site<br/> built by Newman students<br/> for Newman students</h1>
+            <div class="row justify-content-center">
+            <a class="btn btn-light col-6" href="/register.php">Register Now</a>
+            </div>    
+        </div>
     </div>
     <hr>
     <div class="made-by-page">
