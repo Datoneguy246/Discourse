@@ -73,10 +73,6 @@ body {
     flex-direction: column;
 }
 
-footer{
-    text-align: center;
-}
-
 .form-group:not(:last-child) {
     margin-bottom: 1em;
 }
@@ -121,20 +117,15 @@ header {
 }
 
 .intro {
-    color: black;
+    color: white;
     background: url(../img/12-newman.jpg) no-repeat center center fixed;
     padding: 2em;
     min-height: 400px;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    align-items: center;
 }
 
 .intro h1 {
-    background-color: white;
-    padding: 0.5em;
-    border-radius: 0.5em;
     font-weight: bold;
 }
 
@@ -164,15 +155,6 @@ hr{
     height: 3px;
     color: var(--text-color);
     margin: 0px;
-}
-
-.made-by {
-    text-align: center;
-}
-
-.made-by-page {
-    background-color: rgb(139, 196, 247);
-    overflow: hidden;
 }
 
 .hidden{
