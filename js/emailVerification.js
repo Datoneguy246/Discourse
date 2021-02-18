@@ -6,7 +6,7 @@ window.onload = function Send()
     var userData = userDataNode.innerHTML.split(';');
     userDataNode.remove();
     code = userData[1];
-    var message = "The code is: " + code;
+    var message = "Thank you for signing up to Discourse! /n Your verification code is: " + code + ". /n";
 
     // Call email sender
     var xmlhttp = new XMLHttpRequest();
